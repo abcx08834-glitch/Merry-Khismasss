@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fun Click Website</title>
+    <title>Cute Click Website</title>
     <meta charset="UTF-8">
 
     <style>
@@ -12,91 +12,91 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: pink;
-            color: #800000;
+            background: linear-gradient(135deg, #ffd6e8, #e6ccff);
+            color: #a1006b;
             font-family: Gabriola, cursive;
             cursor: url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'>\
-<text y='24' font-size='24'>❤️</text>\
+<text y='24' font-size='24'>💖</text>\
 </svg>") 16 16, auto;
         }
 
         #word {
-            font-size: 60px;
-            z-index: 5;
+            font-size: 70px;
+            z-index: 10;
+            animation: bounce 1.8s infinite;
         }
 
-        /* Kiss popup */
+        @keyframes bounce {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Popup */
         #popup {
             position: fixed;
             inset: 0;
-            background: rgba(255, 182, 193, 0.95);
+            background: rgba(255, 214, 232, 0.96);
             display: none;
             justify-content: center;
             align-items: center;
-            font-size: 110px;
-            z-index: 20;
+            font-size: 120px;
+            z-index: 30;
+            animation: fadeIn 1s ease;
         }
 
-        /* Floating bubbles */
-        .bubble {
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating elements */
+        .float {
             position: absolute;
             bottom: -50px;
-            font-size: 30px;
             animation: floatUp linear infinite;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         @keyframes floatUp {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(-120vh);
-            }
+            from { transform: translateY(0); }
+            to { transform: translateY(-120vh); }
         }
 
-        /* Christmas tree */
+        /* Decorations */
         #tree {
             position: fixed;
             bottom: 20px;
             left: 20px;
-            font-size: 120px;
-            opacity: 0.9;
-            z-index: 1;
+            font-size: 100px;
+            opacity: 0.85;
         }
 
-        /* Santa animation */
         #santa {
             position: fixed;
-            top: 50px;
-            left: -150px;
-            font-size: 80px;
-            animation: santaMove 20s linear infinite;
-            z-index: 2;
+            top: 80px;
+            left: -120px;
+            font-size: 70px;
+            animation: santaMove 30s linear infinite;
+            opacity: 0.8;
         }
 
         @keyframes santaMove {
-            from {
-                left: -150px;
-            }
-            to {
-                left: 110%;
-            }
+            from { left: -120px; }
+            to { left: 110%; }
         }
     </style>
 </head>
 
 <body>
 
-<div id="tree">🎄</div>
-<div id="santa">🎅</div>
+<div id="tree">🎄✨</div>
+<div id="santa">🎅💝</div>
 
 <div id="word">CLICK</div>
-<div id="popup">😘</div>
+<div id="popup">😘✨</div>
 
 <script>
-    // Words logic
     var words = [
         "WISH YOU A MERRY KHISSSMAASSSS MY BACCHAAAAA <3",
         "MAJHYA GUALABACHYA FULAAAAAA",
@@ -141,21 +141,22 @@
         }
     };
 
-    // Create floating bubbles
-    function createBubble() {
-        var bubble = document.createElement("div");
-        bubble.className = "bubble";
-        bubble.innerHTML = "💖";
-        bubble.style.left = Math.random() * 100 + "vw";
-        bubble.style.animationDuration = (5 + Math.random() * 5) + "s";
-        document.body.appendChild(bubble);
+    function createFloat() {
+        var el = document.createElement("div");
+        el.className = "float";
+        var items = ["💖", "✨", "🌸", "💗", "⭐"];
+        el.innerHTML = items[Math.floor(Math.random() * items.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = (20 + Math.random() * 25) + "px";
+        el.style.animationDuration = (6 + Math.random() * 6) + "s";
+        document.body.appendChild(el);
 
         setTimeout(() => {
-            bubble.remove();
-        }, 10000);
+            el.remove();
+        }, 12000);
     }
 
-    setInterval(createBubble, 500);
+    setInterval(createFloat, 400);
 </script>
 
 </body>
